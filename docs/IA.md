@@ -38,13 +38,13 @@ Terapis: Hari ini · Klien · Tip saya (P2) · Jadwal (P2).
 8. **Tenant baru di platform (P2):** admin platform melihat tenant baru → paket langganan → dukungan dengan impersonasi teraudit.
 
 ## 4. Keputusan navigasi
-Front desk memakai **kalender seharian**, dan kalender butuh lebar sebanyak mungkin: 6–8 kolom terapis atau ruangan. Pengguna ini bukan power user keyboard (berbeda dari rep Relay); mereka butuh label yang jelas. Modul admin di fase akhir ada 10.
+Front desk memakai **kalender seharian**, dan kalender butuh lebar sebanyak mungkin: 6–8 kolom terapis atau ruangan. Pengguna ini bukan power user keyboard; mereka butuh label yang jelas. Modul admin di fase akhir ada 10.
 
 | Pola | Untuk Lulur |
 |---|---|
-| Sidebar lebar berlabel (Roster/Sukha) | Memakan ±250px dari kalender; kolom terapis menjadi sempit |
-| Rail ikon gelap + panel konteks (Relay) | Ikon tanpa label menyulitkan staf front desk yang berganti-ganti; panel konteks memakan lebar kalender |
-| Navigasi atas (Simpul) | 10 modul + pemilih cabang + tanggal terlalu padat di satu baris; header kalender butuh ruang vertikal |
+| Sidebar lebar berlabel | Memakan ±250px dari kalender; kolom terapis menjadi sempit |
+| Rail ikon gelap + panel konteks | Ikon tanpa label menyulitkan staf front desk yang berganti-ganti; panel konteks memakan lebar kalender |
+| Navigasi atas | 10 modul + pemilih cabang + tanggal terlalu padat di satu baris; header kalender butuh ruang vertikal |
 | **Rail terang 76px dengan ikon + label di bawahnya** | Selalu terlihat, bisa dibaca tanpa hafalan, hanya 76px; kalender tetap lebar |
 
 **Keputusan:** rail terang 76px (ikon + label kecil), logo tenant di atas, Settings dan avatar di bawah. Pemilih cabang dan tanggal ada di header halaman Calendar, bukan di navigasi global. Detail booking terbuka sebagai panel kanan di atas kalender agar konteks hari itu tidak hilang. **Ponsel:** terapis memakai bottom tab (Today · Clients · Tips); front desk di tablet memakai rail yang sama. Halaman booking publik: header tenant + langkah bernomor; checkout fokus tanpa navigasi.

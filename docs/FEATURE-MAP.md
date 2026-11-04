@@ -4,7 +4,7 @@ Dibuat 2026-10-31. Sumber riset (mayoritas sekunder/vendor; klaim harga dan fitu
 - **Pasar spa:** day spa umumnya memakai Mindbody, Fresha, Vagaro; rantai besar memakai Zenoti. Kriteria penting untuk spa: booking multi-layanan berurutan, penugasan ruangan/suite, booking berdua/grup, membership & seri. Kebutuhan umum: **ruangan dan terapis harus kosong bersamaan**. Tabel vendor Zenoti menilai Fresha "tidak" dan Vagaro "dasar" untuk multi-ruangan & couples ([zenoti](https://www.zenoti.com/thecheckin/best-spa-software-2026), [captainbook](https://captainbook.io/blog/spa-booking-software-8-platforms-compared-(2026)), [happoin](https://happoin.com/en/spa-booking-software)).
 - **Harga pesaing (ulasan, perlu verifikasi):** Fresha tanpa biaya bulanan tetapi komisi ±20% klien baru dari marketplace; Vagaro ±$30/bulan; Zenoti ±€500–1.000/bulan.
 - **Klinik estetika:** consent e-sign sebelum janji, foto before/after terikat ke riwayat perawatan, pelacakan paket/kursus sampai selesai ([pabau](https://pabau.com/?p=131913), [zenoti aesthetic](https://www.zenoti.com/en-uk/medical-spa-software/aesthetic-software), [salonist](https://salonist.io/id/industries/aesthetics-clinic-software), [yocale](https://yocale.com/industries/skincare-cosmetic-laser-clinic)).
-- **Kesenjangan riset:** tip, formulir intake, dan kebijakan no-show pesaing tidak terkonfirmasi dari sumber; dirancang dari praktik umum dan lowongan Upwork.
+- **Kesenjangan riset:** tip, formulir intake, dan kebijakan no-show pesaing tidak terkonfirmasi dari sumber; dirancang dari praktik umum.
 
 Legenda: **MVP** = M1–M6 · **P2** = platform & pertumbuhan · **P3** = nanti.
 
@@ -35,12 +35,12 @@ Legenda: **MVP** = M1–M6 · **P2** = platform & pertumbuhan · **P3** = nanti.
 | | Tampilan tablet resepsionis, mode antrian walk-in | P2 | |
 | Terapis | Jadwal hari ini, catatan klien, selesai sesi (web responsif) | MVP | |
 | | PWA penuh: tip saya, cuti, tukar shift | P2 | |
-| | Komisi | P2 | Payroll di Roster |
+| | Komisi | P2 | Payroll di sistem terpisah |
 | Klien | Profil, preferensi, alergi (terenkripsi), riwayat, formulir, paket | MVP | |
 | Komunikasi | Konfirmasi, pengingat H-1 & 2 jam, link formulir, minta ulasan | MVP | WhatsApp + email |
-| | SMS, kampanye win-back, kupon | P2 | Otomasi bisa via Simpul |
+| | SMS, kampanye win-back, kupon | P2 | Otomasi eksternal |
 | Laporan | Utilisasi terapis & ruangan, pendapatan, no-show, rebooking, tip | MVP | |
 | Integrasi | Google Calendar terapis, webhook keluar | P2 | |
 
 ## Dampak ke MVP
-MVP ±3 minggu paruh waktu (roadmap awal 2 minggu): mesin ketersediaan terapis × ruangan, kartu tersimpan, dan formulir adalah inti pembeda.
+MVP ±3 minggu paruh waktu: mesin ketersediaan terapis × ruangan, kartu tersimpan, dan formulir adalah inti pembeda.

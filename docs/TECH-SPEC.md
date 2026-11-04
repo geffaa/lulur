@@ -9,7 +9,7 @@ Monolit Laravel 12 multi-tenant.
 - Resolusi tenant: middleware dari subdomain (custom domain P2) → `app(Tenant::class)`; global scope `tenant_id` di semua model tenant; Postgres RLS (`SET app.tenant_id`) sebagai lapisan kedua.
 
 ## 2. Stack & paket
-Laravel 12, PostgreSQL 16 (`btree_gist` untuk exclusion constraint), Redis + Horizon, Inertia + Vue 3 (SSR), Pest. `stripe/stripe-php`, adaptor Midtrans/Xendit dari Sukha (`PaymentGateway`), `spatie/laravel-activitylog`, `spatie/icalendar-generator` (.ics), `giggsey/libphonenumber-for-php`. Alasan: stack utama user; pola multi-company/RBAC dari Roster, pembayaran dari Sukha, WhatsApp dari Relay/Simpul.
+Laravel 12, PostgreSQL 16 (`btree_gist` untuk exclusion constraint), Redis + Horizon, Inertia + Vue 3 (SSR), Pest. `stripe/stripe-php`, adaptor Midtrans/Xendit di balik `PaymentGateway` (belum ditulis; saat ini hanya gateway sandbox), `spatie/laravel-activitylog`, `spatie/icalendar-generator` (.ics), `giggsey/libphonenumber-for-php`. Alasan: PostgreSQL untuk exclusion constraint dan RLS; Laravel + Vue untuk kecepatan membangun.
 
 ## 3. Data model
 | Tabel | Kolom utama |
@@ -35,7 +35,7 @@ Laravel 12, PostgreSQL 16 (`btree_gist` untuk exclusion constraint), Redis + Hor
 | tips | payment_id, staff_id, amount |
 | reminders | id, booking_id, kind, channel, send_at, sent_at, status |
 | waitlist_entries | id, tenant_id, client_id, service_id, window tstzrange, status (P2 otomatis) |
-| users, memberships(role per tenant), audit_logs | pola Roster |
+| users, memberships(role per tenant), audit_logs | |
 
 ## 4. API / route
 - Publik: `GET /services`, `GET /availability?service_variant=&date=&staff=&guests=2`, `POST /holds`, `POST /bookings/{code}/details`, `POST /bookings/{code}/pay`, `GET /b/{code}?t={signed}` (kelola), `POST /forms/{submission}/sign`.
@@ -62,8 +62,8 @@ Hasil di-cache per (cabang, tanggal) dan diinvalidasi saat booking/shift berubah
 | Layanan | Pakai | Catatan |
 |---|---|---|
 | Stripe | Deposit, SetupIntent kartu tersimpan, off-session charge denda no-show, tip | Aturan off-session/SCA perlu verifikasi |
-| Midtrans / Xendit | Deposit IDR via QRIS/VA/e-wallet | Adaptor dari Sukha |
-| WhatsApp Cloud API | Konfirmasi, pengingat, link formulir | Simulasi di demo; bisa dirutekan lewat Simpul |
+| Midtrans / Xendit | Deposit IDR via QRIS/VA/e-wallet | Adaptor belum ditulis (sandbox saja) |
+| WhatsApp Cloud API | Konfirmasi, pengingat, link formulir | Simulasi di demo |
 | Email (Resend/SMTP) | Konfirmasi + .ics | |
 | Google Calendar | Sinkron jadwal terapis | P2 |
 

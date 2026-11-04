@@ -40,4 +40,4 @@
 Admin platform + langganan + impersonasi, membership berulang, waitlist otomatis, multi-cabang penuh, PWA terapis, komisi, foto before/after, Google Calendar, SMS, custom domain.
 
 ## Definisi selesai
-Lihat ROADMAP: repo + README, demo live, studi kasus + video, Notes N-042 diperbarui.
+Repo + README, demo live, studi kasus + video.

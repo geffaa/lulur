@@ -1,6 +1,6 @@
 # PRD — Lulur (platform booking multi-tenant untuk spa & klinik kecantikan)
 
-Dibuat 2026-10-31. Proyek portfolio Upwork #5 (Notes N-042). Berbeda dari ~/Project/bookwell (booking generik dengan Lovable + Supabase): Lulur dibuat dengan Laravel dan fokus ke bisnis **wellness** (spa, pijat, klinik kecantikan/estetika), dengan kedalaman domain yang tidak ada di tool generik.
+Dibuat 2026-10-31. Lulur dibuat dengan Laravel dan fokus ke bisnis **wellness** (spa, pijat, klinik kecantikan/estetika), dengan kedalaman domain yang tidak ada di tool generik.
 
 ## 1. Ringkasan
 Lulur adalah platform booking multi-tenant. Setiap bisnis (tenant) punya halaman booking bermerek sendiri, cabang, layanan, terapis, ruangan, paket, dan aturan deposit. Inti produk: **slot hanya muncul jika terapis yang cocok DAN ruangan yang sesuai sama-sama kosong**, termasuk booking berdua (2 terapis + suite couples) dan beberapa layanan berurutan. Di sekitarnya: deposit dan denda no-show, formulir intake/consent yang ditandatangani sebelum datang, paket sesi dan membership, gift card, tip, pengingat WhatsApp/email, dan kalender front-desk.
@@ -10,7 +10,7 @@ Lulur adalah platform booking multi-tenant. Setiap bisnis (tenant) punya halaman
 - Zenoti kuat tetapi mahal untuk spa kecil (estimasi ulasan €500–1.000/bulan, perlu verifikasi). Fresha mengambil komisi klien baru dari marketplace.
 - No-show menghabiskan slot 60–120 menit; deposit dan kartu tersimpan jarang diterapkan dengan benar.
 - Klinik estetika butuh consent dan pelacakan sesi paket sampai selesai ([pabau](https://pabau.com/?p=131913), [salonist](https://salonist.io/id/industries/aesthetics-clinic-software)); kertas consent di meja resepsionis memperlambat check-in.
-- Klien Upwork sering minta "custom booking untuk spa saya" yang menggantikan langganan tool tersebut (contoh lowongan di Notes N-042).
+- Pemilik spa sering ingin booking custom yang menggantikan langganan tool tersebut.
 
 ## 3. Tujuan & metrik sukses (demo, data fiktif)
 | Tujuan | Metrik |
@@ -34,8 +34,8 @@ Lulur adalah platform booking multi-tenant. Setiap bisnis (tenant) punya halaman
 | ID | Asumsi | Risiko |
 |---|---|---|
 | A1 | Tenant demo: **Tirta Spa** (Ubud & Seminyak, IDR, WITA), **Juniper Massage** (Philadelphia, USD, America/New_York), **Rona Aesthetic** (Jakarta, IDR, WIB) | Rendah |
-| A2 | Pembayaran: Stripe (USD, kartu tersimpan untuk denda no-show) + Midtrans/Xendit (IDR, QRIS/VA) di balik interface `PaymentGateway` (dipakai ulang dari Sukha). Mode sandbox | Sedang: biaya & aturan kartu tersimpan perlu verifikasi |
-| A3 | Pengingat: email (MVP) + WhatsApp Cloud API (MVP, simulasi di demo; bisa lewat Simpul) + SMS Twilio (P2) | Sedang |
+| A2 | Pembayaran: Stripe (USD, kartu tersimpan untuk denda no-show) + Midtrans/Xendit (IDR, QRIS/VA) di balik interface `PaymentGateway`. Mode sandbox | Sedang: biaya & aturan kartu tersimpan perlu verifikasi |
+| A3 | Pengingat: email (MVP) + WhatsApp Cloud API (MVP, simulasi di demo) + SMS Twilio (P2) | Sedang |
 | A4 | Satu database, isolasi dengan `tenant_id` + global scope + Postgres RLS sebagai lapisan kedua; subdomain `{tenant}.lulur.app`, custom domain P2 | Sedang |
 | A5 | Bukan sistem medis: tidak menyimpan rekam medis/diagnosis; consent dan foto before/after (P2) disimpan terenkripsi | Sedang: regulasi per negara perlu dicek |
 
@@ -53,11 +53,11 @@ Lulur adalah platform booking multi-tenant. Setiap bisnis (tenant) punya halaman
 - F10 Paket & gift card: paket sesi (mis. 5× facial), masa berlaku, gift card dengan saldo
 - F11 Pengingat & notifikasi: konfirmasi, H-1, 2 jam sebelum, minta ulasan, template per tenant
 - F12 Laporan: utilisasi terapis & ruangan, pendapatan, tingkat no-show, rebooking, tip per terapis
-- F13 Peran: owner, manajer, front desk, terapis; audit; 2FA (pola dari Roster)
+- F13 Peran: owner, manajer, front desk, terapis; audit; 2FA
 
 **P2:** admin platform (tenant, langganan, impersonasi teraudit), membership berulang, waitlist otomatis (isi slot batal), multi-cabang penuh + transfer klien, aplikasi terapis PWA lengkap, komisi terapis, foto before/after (estetika), Google Calendar sync, SMS, custom domain, kupon.
 **P3:** marketplace antar tenant, POS produk retail + stok, kelas/grup (yoga), multi-bahasa booking (EN/ID/JP).
-**Bukan tujuan:** rekam medis/EMR, payroll terapis (pakai Roster), aplikasi native.
+**Bukan tujuan:** rekam medis/EMR, payroll terapis (gunakan sistem payroll terpisah), aplikasi native.
 
 ## 7. User stories (ringkas)
 - Sebagai pasangan turis, kami booking "Couples Ritual" 120 menit; sistem hanya menawarkan jam ketika Teratai Suite dan dua terapis kosong.
@@ -101,7 +101,6 @@ Lihat [IA.md](IA.md) bagian alur end-to-end.
 | Aturan kartu tersimpan & denda no-show berbeda per negara/gateway | Kebijakan per tenant, persetujuan eksplisit, perlu verifikasi |
 | Regulasi data kesehatan (consent/foto) | Tidak menyimpan diagnosis; enkripsi; P2 foto dengan retensi |
 | Kompleksitas mesin ketersediaan | Tes berbasis properti untuk kombinasi terapis × ruangan × buffer |
-| Tumpang tindih dengan Bookwell | Bookwell = generik + Lovable; Lulur = vertikal wellness + Laravel |
 
 ## 12. Distribusi & monetisasi
-Portfolio Upwork untuk lowongan custom booking spa/klinik/massage dan "SaaS architect". Demo: tiga tenant dengan zona waktu & mata uang berbeda + video 2 menit. Bila dijual: langganan per cabang (P2).
+Demo: tiga tenant dengan zona waktu dan mata uang berbeda. Bila dijual: langganan per cabang (P2).

@@ -224,16 +224,6 @@ Navigation follows docs/IA.md:
 - The location picker and date sit in the calendar header.
 - Booking details open in a right panel so the day stays visible.
 
-How it differs from the other portfolio products:
-
-| Product | Navigation | Font | Accent | Other |
-|---|---|---|---|---|
-| Roster | Light accordion sidebar | Source Sans | Teal | |
-| Relay | Dark icon rail + context panel | Geist | Violet | |
-| Sukha | Dark nila bar + labeled sidebar | Manrope / Bricolage | Nila | |
-| Simpul | Top tabs | IBM Plex | Copper | |
-| **Lulur** | Light labeled rail | Hanken Grotesk + Literata | Rosewood | Soft floating cards, spa photos |
-
 ## Colors
 - **Rosewood** #8C3B4A for primary actions, selected chips, days and slots, the current rail item, and the "now" line; strong #722E3B; soft #F6E6E9.
 - **Gold** #B7791F marks packages and signature treatments; text uses #8A5A12 for contrast.
@@ -261,7 +251,7 @@ How it differs from the other portfolio products:
 - **Therapist view:** single column, max 420px, with bottom tabs.
 
 ## Elevation & Depth
-Cards float on a soft two-layer shadow with no border, the opposite of Roster's flat bordered cards. Popovers and toasts use a deeper shadow. Selected service cards and calendar blocks get a 2px rosewood ring.
+Cards float on a soft two-layer shadow with no border. Popovers and toasts use a deeper shadow. Selected service cards and calendar blocks get a 2px rosewood ring.
 
 ## Shapes
 2 (thin bars), 4 (small tags), 5 (avatar marks), 6 (list items, segments), 8 (buttons, inputs, calendar blocks), 10 (tenant mark), 12 (cards, option cards, service photos), 16 (hero), full (chips, avatars, switches, day dots).

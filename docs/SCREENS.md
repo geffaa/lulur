@@ -1,6 +1,6 @@
 # Screens — Lulur
 
-Bahasa UI: Inggris (klien Upwork global; tenant demo Bali melayani turis). Data fiktif.
+Bahasa UI: Inggris (audiens global; tenant demo Bali melayani turis). Data fiktif.
 
 ## Halaman booking publik (tenant Tirta Spa)
 | ID | Layar | Mode | Fitur | Mockup? |
