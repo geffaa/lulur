@@ -119,7 +119,14 @@ class CheckoutController extends Controller
         }
 
         $payment = $this->payments->createForBooking($booking, 'deposit', $method);
-        $payload = $this->payments->gatewayFor($booking->tenant->currency)->start($payment);
+        try {
+            $payload = $this->payments->gatewayFor($booking->tenant->currency)->start($payment);
+        } catch (\RuntimeException $e) {
+            report($e);
+            $payment->update(['status' => 'failed']);
+
+            return response()->json(['message' => 'The payment provider could not start the payment. Please try again.'], 502);
+        }
 
         return response()->json(['redirect' => $payload['redirect']]);
     }

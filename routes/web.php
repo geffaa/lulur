@@ -37,6 +37,7 @@ Route::post('/book/{code}/pay', [CheckoutController::class, 'pay'])->name('booki
 // sandbox gateway (Lulur Pay) — mimics the provider page + webhook
 Route::get('/pay/{payment}', [SandboxPayController::class, 'show'])->name('pay.show');
 Route::post('/pay/{payment}/approve', [SandboxPayController::class, 'approve'])->name('pay.approve');
+Route::get('/pay/return/{payment}', \App\Http\Controllers\Public\PayReturnController::class)->name('pay.return');
 Route::post('/pay/{payment}/decline', [SandboxPayController::class, 'decline'])->name('pay.decline');
 
 Route::get('/b/{code}', [ManageController::class, 'show'])->name('booking.manage');

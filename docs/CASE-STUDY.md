@@ -30,18 +30,18 @@ Writing the end-to-end test for the booking flow exposed a bug that unit tests a
 
 | Check | Result |
 |---|---|
-| Automated tests | 29 Pest tests (87 assertions) on a real PostgreSQL database, plus 14 Playwright browser tests (7 flows at desktop and phone size), all passing |
+| Automated tests | 39 Pest tests (121 assertions) on a real PostgreSQL database, plus 14 Playwright browser tests (7 flows at desktop and phone size), all passing |
 | Concurrency | 10 parallel processes, exactly 1 booking, repeated 3 times |
 | Browser, 1440 px and 390 px | Every admin and booking page loaded; no horizontal scroll; no native form controls; no console errors apart from external requests blocked in my sandbox |
 | End-to-end, desktop and 390 px phone | Couples Ritual: treatment, time, details, health questions, drawn signature, sandbox deposit, confirmation; the stored guest name and signature are asserted |
 
 ## What is simulated (and I say so)
 
-Payments use a built-in sandbox gateway that triggers the same code path as a provider webhook; Stripe and Midtrans adapters, webhook signature checks, WhatsApp Cloud API and an email provider are not connected (messages are written to the log). There is no hosted demo yet. Calendar drag-and-drop is not covered by tests.
+Indonesian (IDR) payments go through the Midtrans sandbox: I made a real sandbox payment with a test card and the booking confirmed on return. Webhook signature and amount checks are tested, but I have not received a real Midtrans webhook (it needs a public URL). USD tenants use a built-in simulation; Stripe, production Midtrans activation, WhatsApp Cloud API and an email provider are not connected (messages are written to the log). There is no hosted demo yet. Calendar drag-and-drop is not covered by tests.
 
 ## What I would do next for a real client
 
-1. Connect one real payment provider (sandbox first) with signature verification, and move webhooks to a tenant-independent URL.
+1. Activate Midtrans for production (the client's own merchant account), expose the webhook URL, and add Stripe for USD tenants.
 2. Connect WhatsApp Cloud API with approved templates, and an email provider.
 3. Add a Playwright suite for the booking flow and the calendar.
 4. Deploy with wildcard subdomains and Horizon workers.

@@ -12,14 +12,14 @@ Laravel + PostgreSQL + Inertia/Vue (PostgreSQL was chosen for its exclusion cons
 | M1 multi-tenant foundation (subdomain, global scope + RLS, roles, 2FA) | Done; tenant isolation tested |
 | M2 catalog, team, rooms | Done |
 | M3 availability engine, holds | Done; 10-process race test passes (exactly one booking) |
-| M4 public booking, forms, payments, reminders | Done **with simulated gateway and simulated WhatsApp/email**; webhook idempotency tested |
+| M4 public booking, forms, payments, reminders | Done; IDR payments via Midtrans sandbox, USD via simulation; WhatsApp/email simulated |
 | M5 front desk and clients | Done (calendar, checkout + tip, no-show fee, packages, gift cards, therapist Today) |
 | M6 reports, README, case study | Done; demo video recorded, no hosted demo |
 
-29 Pest tests (87 assertions) and 14 Playwright browser tests (`npm run e2e`), all passing. UI checked in a browser at 1440 and 390 px (zero native form controls, zero horizontal scroll).
+39 Pest tests (121 assertions) and 14 Playwright browser tests (`npm run e2e`), all passing. UI checked in a browser at 1440 and 390 px (zero native form controls, zero horizontal scroll).
 
 ## Hand-off notes
-- **Not real yet:** Stripe and Midtrans/Xendit adapters, webhook signature verification, WhatsApp Cloud API, email provider. Webhook routes live behind the tenant-resolving middleware; real providers need one global URL, so move them outside it before wiring a provider.
+- **Payments:** Midtrans Snap (sandbox) is implemented for IDR: transaction creation, webhook signature check + amount check, status reconciliation on return; webhook routes no longer go through tenant resolution. Verified live with a real sandbox payment; a real webhook delivery is untested (needs a public URL). **Not real yet:** Stripe, production Midtrans activation, WhatsApp Cloud API, an email provider.
 - **Browser tests exist** (e2e/, own database). Not covered: calendar drag-and-drop and real payment providers.
 - **Scheduler required:** `lulur:expire-holds` and `lulur:send-reminders` run every minute via `schedule:work`; without it holds never expire.
 - **Demo data is date-relative.** Re-seed on a new day.

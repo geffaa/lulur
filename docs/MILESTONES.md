@@ -21,7 +21,7 @@
 
 ## M4 — Booking publik, formulir, pembayaran (±4 hari)
 - [x] B01–B05; formulir berversi + e-sign; policy snapshot
-- [ ] PaymentGateway: Stripe (deposit, SetupIntent, off-session no-show) + Midtrans (QRIS/VA); webhook idempoten — sandbox gateway only; Stripe/Midtrans adapters not written; idempotent webhook handling done
+- [~] PaymentGateway: Stripe (deposit, SetupIntent, off-session no-show) + Midtrans (QRIS/VA); webhook idempoten — Midtrans Snap sandbox done (verified live); Stripe not written; idempotent, signed webhook handling done
 - [~] Email + WhatsApp (simulasi) konfirmasi, .ics, pengingat — simulated (log); .ics done
 - **Verifikasi:** Playwright booking couples di 390px sampai konfirmasi. — driven manually with Playwright scripts, not committed as a test
 

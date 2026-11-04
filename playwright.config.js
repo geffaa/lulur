@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test'
 
 // E2E runs against its own database (lulur_e2e) so the dev data is never touched.
-const env = { ...process.env, APP_ENV: 'local', DB_DATABASE: 'lulur_e2e', CACHE_STORE: 'array', SESSION_DRIVER: 'file', QUEUE_CONNECTION: 'sync' }
+const env = { ...process.env, APP_ENV: 'local', DB_DATABASE: 'lulur_e2e', CACHE_STORE: 'array', SESSION_DRIVER: 'file', QUEUE_CONNECTION: 'sync', MIDTRANS_SERVER_KEY: '' } // e2e always uses the built-in sandbox gateway
 
 export default defineConfig({
     testDir: './e2e',

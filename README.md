@@ -4,7 +4,7 @@
 
 Lulur is a booking platform for wellness businesses (day spas, massage studios, aesthetic clinics). A time slot is only offered when a **qualified therapist AND a suitable room are both free at the same time** — including couples bookings (two therapists plus a couples suite) and the buffer between sessions. Around that core: deposits and no-show fees, versioned intake and consent forms with e-signature, session packages, gift cards, tips, WhatsApp/email reminders and a front-desk calendar.
 
-> Everything here is a demo with fictional data. Payments run against a built-in sandbox gateway and WhatsApp/email are written to the log; nothing is sent to real providers. See [What is and is not real](#what-is-and-is-not-real).
+> Everything here is a demo with fictional data. Payments run against Midtrans' sandbox (IDR) or a built-in sandbox gateway, and WhatsApp/email are written to the log; no real money moves and nothing is sent to real messaging providers. See [What is and is not real](#what-is-and-is-not-real).
 
 ## Screenshots
 
@@ -69,7 +69,7 @@ Password for all seeded users: `password`. Clients book without an account.
 php artisan test
 ```
 
-29 Pest tests (87 assertions) against a real PostgreSQL database, plus 14 Playwright browser tests (7 flows × desktop and phone viewports):
+39 Pest tests (121 assertions) against a real PostgreSQL database, plus 14 Playwright browser tests (7 flows × desktop and phone viewports):
 
 - availability engine (table cases): couples needs suite + two therapists, buffers, gender preference, auto-assignment
 - constraints: overlapping room inserts are rejected without the engine; **10 OS processes race for one slot and exactly one booking is created**
@@ -80,6 +80,9 @@ php artisan test
 - payment webhook replay confirms once and does not double the deposit
 - WhatsApp `STOP` skips WhatsApp reminders but not email
 - checkout details create the client, name the guests and store the signed consent
+- Midtrans: Snap transaction request, webhook signature check (forged signatures rejected), amount cross-check, replay safety, expiry, and status reconciliation on return
+
+Live check (not automated): a real Midtrans sandbox payment with a test card, returning to the confirmation page.
 
 Browser tests (`npm run e2e`, own database `lulur_e2e`, needs PostgreSQL and `npx playwright install chromium`): couples booking from treatment to confirmation with a drawn signature and sandbox deposit, party-size filtering, a held slot disappearing for a second visitor, calendar and detail panel, adding a shift and time off with the custom pickers, therapist landing page, and a scan of every page for native form controls and horizontal scroll.
 
@@ -90,7 +93,8 @@ Not covered: calendar drag-and-drop, and any real payment provider.
 | Area | State |
 |---|---|
 | Availability, constraints, holds, multi-tenancy, forms, packages, reports | Implemented and exercised by tests and in the browser |
-| Payments | **Sandbox only.** The gateway is a simulated "Lulur Pay" page that triggers the same idempotent code path a provider webhook would. Stripe and Midtrans/Xendit adapters are not written; the webhook endpoints exist but do **not** verify provider signatures yet |
+| Payments (IDR) | **Midtrans Snap, sandbox.** Set `MIDTRANS_SERVER_KEY` (Midtrans sandbox server key, in `.env`) and IDR tenants pay on Midtrans' hosted page; a real sandbox payment confirmed a booking end to end. Webhook signatures are verified and tested against the documented scheme, but I have **not** received a real Midtrans webhook (that needs a public URL); locally the booking is confirmed by pulling the status when the customer returns. Not production-activated |
+| Payments (USD) and no key set | Built-in "Lulur Pay" simulation (same idempotent confirmation path). No Stripe adapter |
 | WhatsApp / email | Written to `storage/logs/laravel.log`; no WhatsApp Cloud API or mail provider is connected |
 | Rule versioning | Policies are snapshotted per booking and forms are versioned; there are no effective-dated rule packs |
 | Deployment | Not deployed (local only) |

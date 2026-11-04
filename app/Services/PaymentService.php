@@ -11,6 +11,7 @@ use App\Models\GiftCardLedger;
 use App\Models\Payment;
 use App\Models\Tip;
 use App\Support\Gateway\LulurPayGateway;
+use App\Support\Gateway\MidtransGateway;
 use App\Support\Gateway\PaymentGateway;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -19,8 +20,53 @@ class PaymentService
 {
     public function gatewayFor(string $currency): PaymentGateway
     {
-        // one sandbox gateway for the demo; swap per-currency in production
+        // IDR goes to Midtrans when a server key is configured; everything else uses the built-in sandbox
+        if ($currency === 'IDR' && ($key = config('services.midtrans.server_key'))) {
+            return new MidtransGateway($key, (bool) config('services.midtrans.production'));
+        }
+
         return new LulurPayGateway();
+    }
+
+    public function midtrans(): ?MidtransGateway
+    {
+        $gateway = $this->gatewayFor('IDR');
+
+        return $gateway instanceof MidtransGateway ? $gateway : null;
+    }
+
+    /**
+     * Apply a Midtrans notification (webhook body or status API response).
+     * The signature must already be verified (webhook) or the data fetched from Midtrans itself (status API).
+     * Returns 'paid' | 'failed' | 'pending' | 'unknown_order' | 'amount_mismatch'.
+     */
+    public function applyMidtransNotification(array $n): string
+    {
+        $payment = Payment::withoutGlobalScopes()->where('idempotency_key', $n['order_id'] ?? '')->first();
+        if (! $payment || $payment->gateway !== 'midtrans') {
+            return 'unknown_order';
+        }
+        // gross_amount arrives as "555000.00"
+        if ((int) round((float) ($n['gross_amount'] ?? -1)) !== (int) $payment->amount) {
+            return 'amount_mismatch';
+        }
+
+        $status = $n['transaction_status'] ?? '';
+        $paid = $status === 'settlement' || ($status === 'capture' && ($n['fraud_status'] ?? 'accept') === 'accept');
+        if ($paid) {
+            $this->markSucceeded($payment->idempotency_key, $n['transaction_id'] ?? null);
+
+            return 'paid';
+        }
+        if (in_array($status, ['deny', 'cancel', 'expire', 'failure'], true)) {
+            if ($payment->status === 'pending') {
+                $payment->update(['status' => 'failed']);
+            }
+
+            return 'failed';
+        }
+
+        return 'pending';
     }
 
     public function createForBooking(Booking $booking, string $kind, ?string $method = null, ?int $amount = null): Payment

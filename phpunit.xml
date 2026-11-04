@@ -28,6 +28,7 @@
         <env name="DB_DATABASE" value="lulur_test"/>
         <env name="DB_USERNAME" value="geffaaa"/>
         <env name="MAIL_MAILER" value="array"/>
+        <env name="MIDTRANS_SERVER_KEY" value=""/>
         <env name="PULSE_ENABLED" value="false"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>

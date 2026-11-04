@@ -22,6 +22,7 @@ const guests = ref(Array.from({ length: guestsCount }, (_, i) => ({
     signature: '',
 })))
 const activeGuest = ref(0)
+const payError = ref(null)
 
 const contact = ref({ name: '', phone: '', email: '', marketing_consent: false })
 const method = ref(props.payment_methods[0].id)
@@ -85,8 +86,9 @@ async function pay() {
         headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]')?.content ?? '' },
         body: JSON.stringify({ method: method.value }),
     })
-    const json = await res.json()
+    const json = await res.json().catch(() => ({}))
     if (json.redirect) window.location = json.redirect
+    else payError.value = json.message ?? 'Payment could not be started. Please try again.'
     paying.value = false
 }
 
@@ -246,6 +248,7 @@ const holdMins = computed(() => Math.max(0, Math.ceil((props.booking.hold_second
                   <b><Money :amount="depositDue" :currency="currency" /></b>
                   <span class="muted small">Balance <Money :amount="total - depositDue" :currency="currency" /> at the spa · free cancellation until 24 h before</span>
               </div>
+              <p v-if="payError" class="note warn" role="alert"><Icon sm name="circle-alert" /><span>{{ payError }}</span></p>
               <button class="btn primary block" :disabled="!agreePolicy || paying" @click="pay">
                   {{ depositDue ? `Pay deposit ` : 'Confirm booking' }}<template v-if="depositDue"><Money :amount="depositDue" :currency="currency" /></template>
               </button>

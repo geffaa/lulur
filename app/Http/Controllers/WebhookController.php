@@ -26,17 +26,19 @@ class WebhookController extends Controller
         return response()->json(['received' => true]);
     }
 
+    /** Midtrans HTTP notification: verified by signature_key, amount cross-checked, idempotent. */
     public function midtrans(Request $request)
     {
+        $gateway = $this->payments->midtrans();
         $payload = $request->json()->all();
-        if (in_array($payload['transaction_status'] ?? null, ['settlement', 'capture'], true)) {
-            $key = $payload['order_id'] ?? null;
-            if ($key) {
-                $this->payments->markSucceeded($key, $payload['transaction_id'] ?? null);
-            }
+
+        if (! $gateway || ! $gateway->validSignature($payload)) {
+            return response()->json(['error' => 'invalid signature'], 403);
         }
 
-        return response()->json(['received' => true]);
+        $result = $this->payments->applyMidtransNotification($payload);
+
+        return response()->json(['received' => true, 'result' => $result], $result === 'unknown_order' ? 404 : 200);
     }
 
     /** WhatsApp Cloud API inbound. STOP stops reminders for that number. */

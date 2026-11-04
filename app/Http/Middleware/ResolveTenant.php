@@ -22,6 +22,11 @@ class ResolveTenant
 
     public function handle(Request $request, Closure $next): Response
     {
+        // provider webhooks hit one global URL and identify the payment themselves
+        if ($request->is('webhooks/*')) {
+            return $next($request);
+        }
+
         $host = $request->getHost();
         $appDomain = config('lulur.app_domain');
         $platformHost = config('lulur.platform_host');
