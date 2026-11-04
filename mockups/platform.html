@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tenants — Lulur platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lulur-ds.css">
+<style>
+.pl{max-width:1240px;margin:0 auto;padding:var(--s6) var(--s6) var(--s8)}
+.pbar{background:#1E1A1C;color:#fff}
+.pbar .w{max-width:1240px;margin:0 auto;padding:0 var(--s6);height:56px;display:flex;align-items:center;gap:14px}
+.pbar .w b{font:600 18px var(--serif)}
+.pbar .w .badge{background:rgba(255,255,255,.12);color:#F3DDE2}
+.pbar nav{display:flex;gap:4px;margin-left:18px}
+.pbar nav a{color:#CFC6CA;padding:6px 10px;border-radius:var(--r);font-weight:600;font-size:13px}
+.pbar nav a[aria-current]{background:rgba(255,255,255,.12);color:#fff}
+.pbar nav a:hover{text-decoration:none;color:#fff}
+.audit li{display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 18px;border-bottom:1px solid var(--line);font-size:13px}
+.audit li:last-child{border-bottom:0}
+.audit time{font-size:12px;color:var(--text-3)}
+.g2{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:var(--s5)}
+@media (max-width:1100px){.g2{grid-template-columns:minmax(0,1fr)}.pbar nav{display:none}}
+@media (max-width:620px){.pl{padding:var(--s5) var(--s4) var(--s7)}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-log-in" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+  <polyline points="10 17 15 12 10 7" />
+  <line x1="15" x2="3" y1="12" y2="12" /></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14" />
+  <path d="M12 5v14" /></symbol></svg>
+<header class="pbar"><div class="w"><b>Lulur</b><span class="badge">Platform admin · phase 2</span><nav aria-label="Platform"><a href="#" aria-current="page">Tenants</a><a href="#">Plans &amp; billing</a><a href="#">Usage</a><a href="#">Feature flags</a></nav><span style="margin-left:auto"><span class="av sm av-7" aria-hidden="true">AK</span></span></div></header>
+<main class="pl"><div class="ph"><div><h1>Tenants</h1><p>4 businesses · 5 locations · each tenant's data is isolated by tenant id and row-level security</p></div><div class="acts"><button class="btn primary"><svg class="icon sm" aria-hidden="true"><use href="#i-plus"/></svg>Invite business</button></div></div>
+<div class="kpis"><div class="card kpi"><span class="l">MRR</span><span class="v">$486</span><span class="d"><b>↑ $129</b> this month</span></div><div class="card kpi"><span class="l">Bookings, 30 days</span><span class="v">2,371</span><span class="d">across all tenants</span></div>
+<div class="card kpi"><span class="l">Online share</span><span class="v">68%</span><span class="d">booked without staff</span></div><div class="card kpi"><span class="l">Support logins</span><span class="v">3</span><span class="d">all with reason, all audited</span></div></div>
+<div class="g2"><section class="card"><div class="card-h"><h2>Businesses</h2></div><div class="tablewrap"><table class="t"><thead><tr><th>Business</th><th>Location</th><th>Currency · zone</th><th class="n">Locations</th><th>Plan</th><th class="n">Bookings 30 d</th><th>Status</th><th></th></tr></thead><tbody><tr><td><span class="cellp"><span class="av" style="background:var(--brand-soft);color:var(--brand-strong);font-family:var(--serif)">T</span><span class="t2"><b>Tirta Spa</b><small>tirta.lulur.app</small></span></span></td><td>Bali, Indonesia</td><td class="muted">IDR · WITA</td><td class="n">2</td><td>Growth</td><td class="n">1,284</td><td><span class="badge ok">Active</span></td>
+<td class="n"><button class="btn sm"><svg class="icon xs" aria-hidden="true"><use href="#i-log-in"/></svg>Support login</button></td></tr><tr><td><span class="cellp"><span class="av" style="background:var(--brand-soft);color:var(--brand-strong);font-family:var(--serif)">R</span><span class="t2"><b>Rona Aesthetic</b><small>rona.lulur.app</small></span></span></td><td>Jakarta, Indonesia</td><td class="muted">IDR · WIB</td><td class="n">1</td><td>Growth</td><td class="n">638</td><td><span class="badge ok">Active</span></td>
+<td class="n"><button class="btn sm"><svg class="icon xs" aria-hidden="true"><use href="#i-log-in"/></svg>Support login</button></td></tr><tr><td><span class="cellp"><span class="av" style="background:var(--brand-soft);color:var(--brand-strong);font-family:var(--serif)">J</span><span class="t2"><b>Juniper Massage</b><small>juniper.lulur.app</small></span></span></td><td>Philadelphia, US</td><td class="muted">USD · ET</td><td class="n">1</td><td>Starter</td><td class="n">412</td><td><span class="badge ok">Active</span></td>
+<td class="n"><button class="btn sm"><svg class="icon xs" aria-hidden="true"><use href="#i-log-in"/></svg>Support login</button></td></tr><tr><td><span class="cellp"><span class="av" style="background:var(--brand-soft);color:var(--brand-strong);font-family:var(--serif)">S</span><span class="t2"><b>Serenity Day Spa</b><small>serenity.lulur.app</small></span></span></td><td>Singapore</td><td class="muted">SGD · SGT</td><td class="n">1</td><td>Trial</td><td class="n">37</td><td><span class="badge warn">Trial · 9 days left</span></td>
+<td class="n"><button class="btn sm"><svg class="icon xs" aria-hidden="true"><use href="#i-log-in"/></svg>Support login</button></td></tr></tbody></table></div></section>
+<section class="card"><div class="card-h"><h2>Audit</h2></div><ul class="audit"><li><span class="av sm av-5" aria-hidden="true">PW</span><span class="t2"><b>Putri W. (support) logged in as Juniper Massage</b><small>Reason: owner asked to fix tip split · 18 min · read-only</small></span><time>1 Nov 16:02</time></li><li><span class="av sm av-5" aria-hidden="true">PW</span><span class="t2"><b>Plan changed: Rona Aesthetic Starter → Growth</b><small>Billing prorated · invoice INV-2026-1031</small></span><time>31 Oct 10:15</time></li><li><span class="av sm av-7" aria-hidden="true">AK</span><span class="t2"><b>Feature flag “waitlist auto-fill” on for Tirta Spa</b><small>Phase 2 pilot</small></span><time>29 Oct 09:40</time></li></ul></section></div>
+<p class="synthetic">Synthetic demo data. Phase 2 screen, shown to explain the multi-tenant design.</p></main>
+</body>
+</html>

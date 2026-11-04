@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Details · Tirta Spa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lulur-ds.css">
+<style>
+.sec{margin-top:var(--s6);padding:20px;display:grid;gap:14px}
+.sec h2{font-size:16px;display:flex;align-items:center;gap:8px}
+.sec h2 .n{width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;font-size:12px;display:grid;place-items:center}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.health{display:grid;gap:10px}
+.health .q{display:flex;align-items:center;gap:10px;justify-content:space-between;padding:10px 12px;border:1px solid var(--line);border-radius:var(--r);font-size:14px}
+.health .q .seg button{height:26px;padding:0 10px}
+.gtabs{display:flex;gap:6px}
+.policy{font-size:13px;color:var(--text-2);display:grid;gap:6px;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.policy li{display:flex;gap:8px}
+.policy .icon{color:var(--brand);margin-top:2px}
+@media (max-width:620px){.row2{grid-template-columns:minmax(0,1fr)}.health .q{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body class="book">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol><symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+  <circle cx="12" cy="10" r="3" /></symbol><symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" /></symbol><symbol id="i-circle-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" />
+  <line x1="12" x2="12" y1="8" y2="12" />
+  <line x1="12" x2="12.01" y1="16" y2="16" /></symbol><symbol id="i-triangle-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" /></symbol></svg>
+<header class="bhdr"><div class="w"><a class="blogo" href="book-service.html"><i>T</i>Tirta Spa</a><nav class="steps" aria-label="Booking steps"><span class="done"><b><svg class="icon xs" aria-hidden="true"><use href="#i-check"/></svg></b><span class="lab">Service</span></span><span class="sepl"></span><span class="done"><b><svg class="icon xs" aria-hidden="true"><use href="#i-check"/></svg></b><span class="lab">Time</span></span><span class="sepl"></span><span class="on"><b>3</b><span class="lab">Details</span></span></nav>
+<div class="r"><button class="trigger inline" aria-haspopup="listbox"><svg class="icon sm" aria-hidden="true"><use href="#i-map-pin"/></svg>Ubud<svg class="icon sm" aria-hidden="true"><use href="#i-chevron-down"/></svg></button><a class="btn ghost" href="#">My booking</a></div></div></header><main class="bw"><div>
+<h1>Almost done</h1><p class="lead">Wed 4 Nov · 10:30–12:30 · Teratai Suite</p>
+<section class="sec card"><h2><span class="n">1</span>Contact</h2><div class="row2"><div class="field"><label>Full name</label><div class="input">Emma Walsh</div></div><div class="field"><label>Second guest</label><div class="input">Liam Walsh</div></div>
+<div class="field"><label>WhatsApp</label><div class="input"><span class="pre">+44</span>7700 900 418</div><span class="hint">Confirmation and reminders arrive here</span></div><div class="field"><label>Email</label><div class="input">emma.walsh@example.com</div></div></div></section>
+<section class="sec card"><h2><span class="n">2</span>Health &amp; preferences</h2><div class="gtabs" role="tablist"><span class="chip on" role="tab" aria-selected="true">Emma</span><span class="chip" role="tab" aria-selected="false">Liam <svg class="icon xs" aria-hidden="true"><use href="#i-circle-alert"/></svg></span></div>
+<div class="health"><div class="q"><span>Are you pregnant or could you be?</span><span class="seg" role="radiogroup" aria-label="Are you pregnant or could you be?"><button aria-pressed="true">No</button><button aria-pressed="false">Yes</button></span></div><div class="q"><span>High blood pressure or heart condition?</span><span class="seg" role="radiogroup" aria-label="High blood pressure or heart condition?"><button aria-pressed="true">No</button><button aria-pressed="false">Yes</button></span></div><div class="q"><span>Injury or surgery in the last 6 months?</span><span class="seg" role="radiogroup" aria-label="Injury or surgery in the last 6 months?"><button aria-pressed="true">No</button><button aria-pressed="false">Yes</button></span></div><div class="q"><span>Allergic to nuts or nut oils?</span><span class="seg" role="radiogroup" aria-label="Allergic to nuts or nut oils?"><button aria-pressed="false">No</button><button aria-pressed="true">Yes</button></span></div></div>
+<div class="field"><label>Pressure</label><div class="seg" role="radiogroup" aria-label="Pressure" style="width:max-content"><button aria-pressed="false">Light</button><button aria-pressed="true">Medium</button><button aria-pressed="false">Firm</button></div></div>
+<div class="field"><label>Anything we should know?</label><div class="input area">Please avoid my neck, I have a stiff left shoulder.</div></div>
+<div class="note warn"><svg class="icon sm" aria-hidden="true"><use href="#i-triangle-alert"/></svg><span>Nut allergy noted: your therapist will use sunflower oil instead of coconut and almond.</span></div></section>
+<section class="sec card"><h2><span class="n">3</span>Consent</h2><p style="font-size:14px;color:var(--text-2)">I confirm the information above is correct and agree to the Tirta Spa treatment consent (v3, updated 1 Oct 2026).</p>
+<div class="sig"><svg viewBox="0 0 300 80" aria-hidden="true"><path d="M10 55 C 30 10, 45 70, 60 40 S 90 20, 100 50 S 130 70, 140 35 C 150 15, 170 60, 185 45 S 220 30, 240 50 S 270 55, 290 30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="x">Emma Walsh · signed 2 Nov 2026, 09:12</span></div><span class="muted small">Liam signs the same form from the link in your confirmation, or at the spa.</span></section>
+<section class="sec card"><h2><span class="n">4</span>Deposit</h2>
+<ul class="policy"><li><svg class="icon xs" aria-hidden="true"><use href="#i-check"/></svg>Pay 30% now, the rest at the spa</li><li><svg class="icon xs" aria-hidden="true"><use href="#i-check"/></svg>Free cancellation or reschedule until Tue 3 Nov, 10:30</li><li><svg class="icon xs" aria-hidden="true"><use href="#i-check"/></svg>Later cancellations or no-shows keep the deposit</li></ul>
+<div role="radiogroup" aria-label="Payment method"><div class="opt" role="radio" aria-checked="true"><span class="rdo" aria-hidden="true"><span class="o"></span></span><span class="t"><b>Card</b><small>Visa, Mastercard, Amex · charged in IDR</small></span><span class="r">Rp 591.000</span></div>
+<div class="opt" role="radio" aria-checked="false"><span class="rdo" aria-hidden="true"><span class="o"></span></span><span class="t"><b>QRIS</b><small>Any Indonesian bank or e-wallet app</small></span><span class="r">Rp 591.000</span></div></div>
+<span class="cbx" role="checkbox" aria-checked="true"><span class="box"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>I agree to the cancellation policy</span></section>
+</div><aside class="summary card" aria-label="Your booking"><h2>Your booking</h2>
+<div class="it"><img src="img/p-couples.jpg" alt=""><span class="t2"><b>Couples Ritual · 120 min</b><small>2 guests · Teratai Suite</small></span></div>
+<div class="row"><span>Couples Ritual × 2</span><span>Rp 1.850.000</span></div><div class="row"><span>Scalp massage add-on</span><span>Rp 120.000</span></div><div class="row"><span>When</span><span>Wed 4 Nov · 10:30–12:30</span></div><div class="row"><span>Therapists</span><span>Any two</span></div>
+<div class="row tot"><span style="color:var(--text)">Total</span><span>Rp 1.970.000</span></div>
+<div class="dep"><span>Pay now (30% deposit)</span><b>Rp 591.000</b><span class="muted small">Balance Rp 1.379.000 at the spa · free cancellation until 24 h before</span></div>
+<a class="btn primary block" href="#">Pay deposit Rp 591.000</a></aside>
+<div class="mbar"><span class="t"><b>Rp 1.970.000</b><small>Deposit Rp 591.000 today</small></span><a class="btn primary" href="#">Pay deposit Rp 591.000</a></div></main>
+</body>
+</html>

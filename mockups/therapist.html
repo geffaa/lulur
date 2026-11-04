@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today — Komang · Lulur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lulur-ds.css">
+<style>
+body{background:#E7E3E5}
+.phone{max-width:420px;margin:0 auto;min-height:100vh;background:var(--ground);display:flex;flex-direction:column}
+.th-top{background:var(--brand);color:#fff;padding:18px 18px 22px;display:grid;gap:14px}
+.th-top .r1{display:flex;align-items:center;gap:10px}
+.th-top .r1 small{display:block;color:#F3DDE2;font-size:12px}
+.th-top .r1 b{font:600 18px var(--serif)}
+.th-top .stat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.th-top .stat div{background:rgba(255,255,255,.12);border-radius:var(--r);padding:8px 10px;display:grid}
+.th-top .stat b{font-size:16px;font-variant-numeric:tabular-nums}
+.th-top .stat span{font-size:12px;color:#fff}
+.list{padding:16px;display:grid;gap:10px;padding-bottom:96px}
+.list h2{font-size:12px;font-weight:600;color:var(--text-3);letter-spacing:.04em;text-transform:uppercase;margin-top:6px}
+.it{padding:14px;display:grid;gap:10px}
+.it .r1{display:flex;align-items:center;gap:10px}
+.it .r1 time{font-weight:700;font-variant-numeric:tabular-nums;font-size:15px}
+.it .r1 .badge{margin-left:auto}
+.it .t2 b{font-size:15px}
+.it .tags{display:flex;gap:6px;flex-wrap:wrap}
+.it.now{box-shadow:0 0 0 2px var(--ok),var(--card)}
+.it.past{opacity:.65}
+.timer{display:flex;align-items:center;gap:10px;background:var(--ok-soft);color:var(--ok);border-radius:var(--r);padding:10px 12px;font-weight:600;font-size:14px}
+.timer .bar{flex:1;height:6px;border-radius:999px;background:#C7E6D4;overflow:hidden}
+.timer .bar i{display:block;height:100%;width:22%;background:var(--ok)}
+.it .btn{height:44px}
+.tabbar{position:sticky;bottom:0;margin-top:auto;display:grid;grid-template-columns:repeat(3,1fr);background:var(--surface);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom))}
+.tabbar a{display:grid;justify-items:center;gap:2px;padding:6px;border-radius:var(--r);font-size:12px;font-weight:600;color:var(--text-3)}
+.tabbar a[aria-current]{color:var(--brand);background:var(--brand-soft)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+  <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" /></symbol><symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+  <path d="M20 3v4" />
+  <path d="M22 5h-4" />
+  <path d="M4 17v2" />
+  <path d="M5 18H3" /></symbol><symbol id="i-timer" viewBox="0 0 24 24"><line x1="10" x2="14" y1="2" y2="2" />
+  <line x1="12" x2="15" y1="14" y2="11" />
+  <circle cx="12" cy="14" r="8" /></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol><symbol id="i-triangle-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" /></symbol><symbol id="i-file-check" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+  <path d="m9 15 2 2 4-4" /></symbol><symbol id="i-user-x" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <line x1="17" x2="22" y1="8" y2="13" />
+  <line x1="22" x2="17" y1="8" y2="13" /></symbol><symbol id="i-calendar-days" viewBox="0 0 24 24"><path d="M8 2v4" />
+  <path d="M16 2v4" />
+  <rect width="18" height="18" x="3" y="4" rx="2" />
+  <path d="M3 10h18" />
+  <path d="M8 14h.01" />
+  <path d="M12 14h.01" />
+  <path d="M16 14h.01" />
+  <path d="M8 18h.01" />
+  <path d="M12 18h.01" />
+  <path d="M16 18h.01" /></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" /></symbol><symbol id="i-hand-coins" viewBox="0 0 24 24"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17" />
+  <path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" />
+  <path d="m2 16 6 6" />
+  <circle cx="16" cy="9" r="2.9" />
+  <circle cx="6" cy="5" r="3" /></symbol></svg>
+<div class="phone"><header class="th-top"><div class="r1"><span class="av  av-7" aria-hidden="true">KS</span><div><small>Monday, 2 Nov · Ubud</small><b>Selamat siang, Komang</b></div><button class="ib" style="margin-left:auto;color:#fff" aria-label="Notifications"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></button></div>
+<div class="stat"><div><b>4</b><span>clients today</span></div><div><b>5 h 30</b><span>booked</span></div><div><b>Rp 150.000</b><span>tips today</span></div></div></header>
+<div class="list"><h2>Now</h2>
+<div class="card it now"><div class="r1"><time>14:00</time><span class="muted small">until 15:30 · Kamboja 2</span><span class="badge ok"><svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>In service</span></div>
+<span class="t2"><b>Ana Souza · Hot Stone 90</b><small>Firm pressure · stones not too hot on calves</small></span>
+<div class="timer"><svg class="icon sm" aria-hidden="true"><use href="#i-timer"/></svg><span>20 of 90 min</span><span class="bar"><i></i></span></div>
+<button class="btn primary"><svg class="icon sm" aria-hidden="true"><use href="#i-check"/></svg>Finish session</button></div>
+<h2>Next</h2>
+<div class="card it"><div class="r1"><time>17:00</time><span class="muted small">until 19:00 · Kamboja 3</span><span class="badge info">Confirmed</span></div>
+<span class="t2"><b>Mia Hoffmann · Lulur Royal Ritual</b><small>First visit · from Germany</small></span>
+<div class="tags"><span class="badge warn"><svg class="icon" aria-hidden="true"><use href="#i-triangle-alert"/></svg>Nut allergy · use sunflower oil</span><span class="badge ok"><svg class="icon" aria-hidden="true"><use href="#i-file-check"/></svg>Form signed</span></div></div>
+<h2>Earlier</h2>
+<div class="card it past"><div class="r1"><time>12:45</time><span class="muted small">Kamboja 3</span><span class="badge bad"><svg class="icon" aria-hidden="true"><use href="#i-user-x"/></svg>No-show</span></div><span class="t2"><b>Daniel Kim · Balinese Massage 60</b><small>Deposit kept per policy</small></span></div>
+<div class="card it past"><div class="r1"><time>10:00</time><span class="muted small">Kamboja 2</span><span class="badge"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Completed</span></div><span class="t2"><b>Chloé Martin · Lulur Royal Ritual</b><small>Tip Rp 150.000</small></span></div>
+</div>
+<nav class="tabbar" aria-label="Therapist"><a href="#" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-calendar-days"/></svg>Today</a><a href="#"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Clients</a><a href="#"><svg class="icon" aria-hidden="true"><use href="#i-hand-coins"/></svg>Tips</a></nav></div>
+</body>
+</html>

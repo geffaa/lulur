@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Choose a time · Tirta Spa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lulur-ds.css">
+<style>
+.blk{margin-top:var(--s6)}
+.blk h2{font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ther{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ther .opt{grid-template-columns:18px 32px minmax(0,1fr)}
+.ther .opt + .opt{margin-top:0}
+.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.day{border:1px solid var(--line-strong);border-radius:var(--r-lg);background:var(--surface);padding:10px 4px;display:grid;justify-items:center;gap:2px;font-size:12px;color:var(--text-3);cursor:pointer}
+.day b{font-size:18px;color:var(--text);font-weight:600}
+.day i{width:6px;height:6px;border-radius:50%;background:var(--ok);margin-top:2px}
+.day i.low{background:var(--warn)}.day i.none{background:var(--line-strong)}
+.day[aria-checked=true]{background:var(--brand);border-color:var(--brand);color:#F3DDE2}
+.day[aria-checked=true] b{color:#fff}.day[aria-checked=true] i{background:#fff}
+.day[aria-disabled=true]{opacity:.55;cursor:not-allowed}
+.slots{display:grid;gap:16px}
+.slots h3{font-size:13px;color:var(--text-3);font-weight:600;margin-bottom:8px;display:flex;gap:6px;align-items:center}
+.sg{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.sl{height:44px;border:1px solid var(--line-strong);border-radius:var(--r);background:var(--surface);font-weight:600;font-variant-numeric:tabular-nums;font-size:14px}
+.sl[aria-checked=true]{background:var(--brand);border-color:var(--brand);color:#fff}
+.why{font-size:13px;color:var(--text-3);display:flex;gap:8px;align-items:flex-start}
+@media (max-width:620px){.ther{grid-template-columns:minmax(0,1fr)}.days{grid-template-columns:repeat(7,64px);overflow-x:auto;padding-bottom:4px}.sg{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style>
+</head>
+<body class="book">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol><symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+  <circle cx="12" cy="10" r="3" /></symbol><symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" /></symbol><symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+  <path d="M20 3v4" />
+  <path d="M22 5h-4" />
+  <path d="M4 17v2" />
+  <path d="M5 18H3" /></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" /></symbol><symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" /></symbol><symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" /></symbol><symbol id="i-sunrise" viewBox="0 0 24 24"><path d="M12 2v8" />
+  <path d="m4.93 10.93 1.41 1.41" />
+  <path d="M2 18h2" />
+  <path d="M20 18h2" />
+  <path d="m19.07 10.93-1.41 1.41" />
+  <path d="M22 22H2" />
+  <path d="m8 6 4-4 4 4" />
+  <path d="M16 18a4 4 0 0 0-8 0" /></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" />
+  <path d="M12 2v2" />
+  <path d="M12 20v2" />
+  <path d="m4.93 4.93 1.41 1.41" />
+  <path d="m17.66 17.66 1.41 1.41" />
+  <path d="M2 12h2" />
+  <path d="M20 12h2" />
+  <path d="m6.34 17.66-1.41 1.41" />
+  <path d="m19.07 4.93-1.41 1.41" /></symbol><symbol id="i-sunset" viewBox="0 0 24 24"><path d="M12 10V2" />
+  <path d="m4.93 10.93 1.41 1.41" />
+  <path d="M2 18h2" />
+  <path d="M20 18h2" />
+  <path d="m19.07 10.93-1.41 1.41" />
+  <path d="M22 22H2" />
+  <path d="m16 6-4 4-4-4" />
+  <path d="M16 18a4 4 0 0 0-8 0" /></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" />
+  <path d="M12 16v-4" />
+  <path d="M12 8h.01" /></symbol></svg>
+<header class="bhdr"><div class="w"><a class="blogo" href="book-service.html"><i>T</i>Tirta Spa</a><nav class="steps" aria-label="Booking steps"><span class="done"><b><svg class="icon xs" aria-hidden="true"><use href="#i-check"/></svg></b><span class="lab">Service</span></span><span class="sepl"></span><span class="on"><b>2</b><span class="lab">Time</span></span><span class="sepl"></span><span class=""><b>3</b><span class="lab">Details</span></span></nav>
+<div class="r"><button class="trigger inline" aria-haspopup="listbox"><svg class="icon sm" aria-hidden="true"><use href="#i-map-pin"/></svg>Ubud<svg class="icon sm" aria-hidden="true"><use href="#i-chevron-down"/></svg></button><a class="btn ghost" href="#">My booking</a></div></div></header><main class="bw"><div>
+<h1>When would you like to come?</h1><p class="lead">Couples Ritual · 120 min · 2 guests</p>
+<section class="blk"><h2>Therapists</h2><div class="ther" role="radiogroup" aria-label="Therapists">
+<div class="opt" role="radio" aria-checked="true"><span class="rdo" aria-hidden="true"><span class="o"></span></span><span class="av sm" style="background:var(--brand-soft);color:var(--brand-strong)"><svg class="icon xs" aria-hidden="true"><use href="#i-sparkles"/></svg></span><span class="t"><b>Any two therapists</b><small>Most available times</small></span></div>
+<div class="opt" role="radio" aria-checked="false"><span class="rdo" aria-hidden="true"><span class="o"></span></span><span class="av sm av-6" aria-hidden="true">MA</span><span class="t"><b>Choose per guest</b><small>Made, Komang, Wayan…</small></span></div>
+<div class="opt" role="radio" aria-checked="false"><span class="rdo" aria-hidden="true"><span class="o"></span></span><span class="av sm" style="background:var(--hover);color:var(--text-2)"><svg class="icon xs" aria-hidden="true"><use href="#i-users"/></svg></span><span class="t"><b>Gender preference</b><small>Female or male therapists</small></span></div></div></section>
+<section class="blk"><h2>November 2026<span style="margin-left:auto;display:flex;gap:2px"><button class="ib" aria-label="Previous week"><svg class="icon sm" aria-hidden="true"><use href="#i-chevron-left"/></svg></button><button class="ib" aria-label="Next week"><svg class="icon sm" aria-hidden="true"><use href="#i-chevron-right"/></svg></button></span></h2><div class="days" role="radiogroup" aria-label="Day"><span class="day" role="radio" aria-checked="false">Mon<b>2</b><i class="low"></i></span><span class="day" role="radio" aria-checked="false">Tue<b>3</b><i class=""></i></span><span class="day" role="radio" aria-checked="true">Wed<b>4</b><i class=""></i></span><span class="day" role="radio" aria-checked="false">Thu<b>5</b><i class="low"></i></span><span class="day" role="radio" aria-checked="false" aria-disabled=true>Fri<b>6</b><i class="none"></i></span><span class="day" role="radio" aria-checked="false">Sat<b>7</b><i class=""></i></span><span class="day" role="radio" aria-checked="false">Sun<b>8</b><i class="low"></i></span></div></section>
+<section class="blk slots"><div><h3><svg class="icon sm" aria-hidden="true"><use href="#i-sunrise"/></svg>Morning</h3><div class="sg" role="radiogroup" aria-label="Morning times"><button class="sl" role="radio" aria-checked="false">09:00</button><button class="sl" role="radio" aria-checked="false">09:30</button><button class="sl" role="radio" aria-checked="true">10:30</button></div></div>
+<div><h3><svg class="icon sm" aria-hidden="true"><use href="#i-sun"/></svg>Afternoon</h3><div class="sg" role="radiogroup" aria-label="Afternoon times"><button class="sl" role="radio" aria-checked="false">13:00</button><button class="sl" role="radio" aria-checked="false">13:30</button><button class="sl" role="radio" aria-checked="false">15:30</button></div></div>
+<div><h3><svg class="icon sm" aria-hidden="true"><use href="#i-sunset"/></svg>Evening</h3><div class="sg" role="radiogroup" aria-label="Evening times"><button class="sl" role="radio" aria-checked="false">17:30</button><button class="sl" role="radio" aria-checked="false">18:00</button></div></div>
+<p class="why"><svg class="icon sm" aria-hidden="true"><use href="#i-info"/></svg><span>Only times when the Teratai Suite and two therapists are free for the full 120 minutes are shown. Friday is fully booked; join the waitlist from the Friday tile.</span></p></section>
+</div><aside class="summary card" aria-label="Your booking"><h2>Your booking</h2>
+<div class="it"><img src="img/p-couples.jpg" alt=""><span class="t2"><b>Couples Ritual · 120 min</b><small>2 guests · Teratai Suite</small></span></div>
+<div class="row"><span>Couples Ritual × 2</span><span>Rp 1.850.000</span></div><div class="row"><span>Scalp massage add-on</span><span>Rp 120.000</span></div><div class="row"><span>When</span><span>Wed 4 Nov · 10:30–12:30</span></div><div class="row"><span>Therapists</span><span>Any two</span></div>
+<div class="row tot"><span style="color:var(--text)">Total</span><span>Rp 1.970.000</span></div>
+<div class="dep"><span>Pay now (30% deposit)</span><b>Rp 591.000</b><span class="muted small">Balance Rp 1.379.000 at the spa · free cancellation until 24 h before</span></div>
+<a class="btn primary block" href="book-checkout.html">Continue</a></aside>
+<div class="mbar"><span class="t"><b>Rp 1.970.000</b><small>Deposit Rp 591.000 today</small></span><a class="btn primary" href="book-checkout.html">Continue</a></div></main>
+</body>
+</html>
