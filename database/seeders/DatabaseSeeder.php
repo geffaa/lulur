@@ -71,7 +71,7 @@ class DatabaseSeeder extends Seeder
             'plan' => 'growth',
             'code_prefix' => 'TRT',
             'branding' => [
-                'logo_letter' => 'T',
+                'logo_letter' => 'T', 'mark' => 'ripple', 'palette' => 'lagoon',
                 'hero' => '/img/p-hero.jpg',
                 'tagline' => 'Balinese rituals in the rice fields of Ubud',
                 'rating' => '4.9',
@@ -504,7 +504,7 @@ class DatabaseSeeder extends Seeder
             'id' => $this->uid(), 'slug' => 'juniper', 'name' => 'Juniper Massage',
             'currency' => 'USD', 'default_timezone' => 'America/New_York', 'plan' => 'starter',
             'code_prefix' => 'JNP',
-            'branding' => ['logo_letter' => 'J', 'hero' => '/img/stone.jpg', 'tagline' => 'Deep work for desk shoulders — Center City, Philadelphia', 'rating' => '4.8', 'reviews' => '412', 'region' => 'Philadelphia, US'],
+            'branding' => ['logo_letter' => 'J', 'mark' => 'sprig', 'palette' => 'evergreen', 'hero' => '/img/stone.jpg', 'tagline' => 'Deep work for desk shoulders — Center City, Philadelphia', 'rating' => '4.8', 'reviews' => '412', 'region' => 'Philadelphia, US'],
             'settings' => [
                 'booking_policy' => ['deposit_percent' => 0, 'cancel_window_hours' => 12, 'no_show_fee_percent' => 50, 'saved_card_mode' => 'required'],
                 'review_url' => 'https://reviews.example/juniper',
@@ -556,7 +556,7 @@ class DatabaseSeeder extends Seeder
             'id' => $this->uid(), 'slug' => 'rona', 'name' => 'Rona Aesthetic',
             'currency' => 'IDR', 'default_timezone' => 'Asia/Jakarta', 'plan' => 'growth',
             'code_prefix' => 'RNA',
-            'branding' => ['logo_letter' => 'R', 'hero' => '/img/facial.jpg', 'tagline' => 'Klinik estetika dengan consent digital', 'rating' => '4.9', 'reviews' => '638', 'region' => 'Jakarta, Indonesia'],
+            'branding' => ['logo_letter' => 'R', 'mark' => 'bloom', 'palette' => 'plum', 'hero' => '/img/facial.jpg', 'tagline' => 'Klinik estetika dengan consent digital', 'rating' => '4.9', 'reviews' => '638', 'region' => 'Jakarta, Indonesia'],
             'settings' => [
                 'booking_policy' => ['deposit_percent' => 50, 'cancel_window_hours' => 48, 'no_show_fee_percent' => 100, 'saved_card_mode' => 'optional'],
                 'review_url' => 'https://reviews.example/rona',

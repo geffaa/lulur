@@ -43,6 +43,7 @@ class HandleInertiaRequests extends Middleware
                 'timezone' => $tenant->default_timezone,
                 'branding' => $tenant->branding,
                 'logo_letter' => $tenant->branding['logo_letter'] ?? mb_substr($tenant->name, 0, 1),
+                'mark' => $tenant->branding['mark'] ?? null,
                 'locations' => $tenant->locations->map(fn ($l) => [
                     'id' => $l->id, 'name' => $l->name, 'slug' => $l->slug,
                 ])->values(),

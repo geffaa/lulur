@@ -30,7 +30,7 @@ Writing the end-to-end test for the booking flow exposed a bug that unit tests a
 
 | Check | Result |
 |---|---|
-| Automated tests | 39 Pest tests (121 assertions) on a real PostgreSQL database, plus 14 Playwright browser tests (7 flows at desktop and phone size), all passing |
+| Automated tests | 39 Pest tests (121 assertions) on a real PostgreSQL database, plus 17 Playwright browser tests (9 flows at desktop and phone size, one phone-only), all passing |
 | Concurrency | 10 parallel processes, exactly 1 booking, repeated 3 times |
 | Browser, 1440 px and 390 px | Every admin and booking page loaded; no horizontal scroll; no native form controls; no console errors apart from external requests blocked in my sandbox |
 | End-to-end, desktop and 390 px phone | Couples Ritual: treatment, time, details, health questions, drawn signature, sandbox deposit, confirmation; the stored guest name and signature are asserted |

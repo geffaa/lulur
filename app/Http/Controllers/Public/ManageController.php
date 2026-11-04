@@ -90,6 +90,7 @@ class ManageController extends Controller
             'brand' => [
                 'name' => $booking->tenant->name,
                 'logo_letter' => $booking->tenant->branding['logo_letter'] ?? 'T',
+                'mark' => $booking->tenant->branding['mark'] ?? null,
             ],
         ]);
     }

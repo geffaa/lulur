@@ -2,6 +2,7 @@
 import { Link, usePage } from '@inertiajs/vue3'
 import Icon from '@/Components/Icon.vue'
 import IconSprite from '@/Components/IconSprite.vue'
+import TenantMark from '@/Components/TenantMark.vue'
 import Toast from '@/Components/Toast.vue'
 
 const page = usePage()
@@ -25,8 +26,8 @@ const isCurrent = (m) => m.key === current()
     <div class="adm">
         <IconSprite />
         <nav class="rail" aria-label="Main">
-            <Link class="tn" :href="route('admin.calendar')" aria-label="Tirta Spa" style="color:#fff;padding:0;width:40px">
-                {{ tenant?.logo_letter ?? 'T' }}
+            <Link class="tn" :href="route('admin.calendar')" :aria-label="tenant?.name" style="color:#fff;padding:0;width:40px">
+                <TenantMark :mark="tenant?.mark" :letter="tenant?.logo_letter ?? 'T'" style="width:100%;height:100%" />
             </Link>
             <Link v-for="m in modules" :key="m.key" :href="m.href ? route(m.href) : '#'" :aria-current="isCurrent(m) ? 'page' : undefined">
                 <Icon :name="m.icon" />{{ m.label }}
@@ -40,7 +41,7 @@ const isCurrent = (m) => m.key === current()
         <div class="main">
             <header class="mtop">
                 <button class="ib" aria-label="Open navigation"><Icon name="menu" /></button>
-                <span class="tn">{{ tenant?.logo_letter ?? 'T' }}</span>
+                <TenantMark class="tn" :mark="tenant?.mark" :letter="tenant?.logo_letter ?? 'T'" />
                 <b>{{ tenant?.name }}</b>
                 <span style="margin-left:auto"><span class="av sm av-5" aria-hidden="true">{{ page.props.auth.user?.initials }}</span></span>
             </header>

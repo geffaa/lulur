@@ -1,4 +1,5 @@
 <script setup>
+import TenantMark from '@/Components/TenantMark.vue'
 import { ref } from 'vue'
 import { router, usePage } from '@inertiajs/vue3'
 import Icon from '@/Components/Icon.vue'
@@ -87,7 +88,7 @@ function initPad(el) {
         <IconSprite />
         <header class="bhdr">
             <div class="w">
-                <a class="blogo" href="/"><i>{{ brand.logo_letter }}</i>{{ brand.name }}</a>
+                <a class="blogo" href="/"><TenantMark :mark="brand.mark" :letter="brand.logo_letter" />{{ brand.name }}</a>
                 <div class="r"><a class="btn ghost" href="/">Book another visit</a></div>
             </div>
         </header>

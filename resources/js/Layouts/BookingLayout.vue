@@ -4,6 +4,7 @@ import Icon from '@/Components/Icon.vue'
 import IconSprite from '@/Components/IconSprite.vue'
 import Toast from '@/Components/Toast.vue'
 import LulurMark from '@/Components/LulurMark.vue'
+import TenantMark from '@/Components/TenantMark.vue'
 
 const props = defineProps({
     step: { type: Number, default: 1 }, // 1 Service, 2 Time, 3 Details
@@ -24,7 +25,7 @@ const stateOf = (s) => (s.n < props.step ? 'done' : s.n === props.step ? 'on' : 
         <header class="bhdr">
             <div class="w">
                 <Link class="blogo" :href="route('booking.index')">
-                    <i>{{ brand.logo_letter ?? 'T' }}</i>{{ brand.name ?? 'Spa' }}
+                    <TenantMark :mark="brand.mark" :letter="brand.logo_letter ?? 'T'" />{{ brand.name ?? 'Spa' }}
                 </Link>
                 <nav class="steps" aria-label="Booking steps">
                     <template v-for="(s, i) in steps" :key="s.n">

@@ -62,3 +62,21 @@ test('no native form controls on any page', async ({ page }) => {
         expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1), `${url} horizontal scroll`).toBe(false)
     }
 })
+
+test('each tenant has its own mark and palette, and the platform mark keeps its own colour', async ({ page }) => {
+    const expected = { tirta: '#1e6f8c', juniper: '#3f6b4a', rona: '#7a4b8c' }
+    for (const [slug, brand] of Object.entries(expected)) {
+        await page.goto(`http://${slug}.localhost:8011/`)
+        await expect(page.locator('.blogo .tmark svg')).toBeVisible() // a drawn mark, not a letter
+        expect((await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--brand').trim())).toLowerCase()).toBe(brand)
+        // the Lulur footer mark must not take the tenant colour
+        expect(await page.locator('.bfoot svg path').last().getAttribute('fill')).toBe('#8C3B4A')
+    }
+})
+
+test('the booking header stays on one line for the longest tenant name at phone width', async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== 'phone')
+    await page.goto('http://rona.localhost:8011/')
+    const h = await page.evaluate(() => document.querySelector('.bhdr .w').getBoundingClientRect().height)
+    expect(h).toBeLessThanOrEqual(70)
+})

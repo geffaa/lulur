@@ -19,7 +19,7 @@ class LoginController extends Controller
         $tenant = $this->ctx->get();
 
         return Inertia::render('Auth/Login', [
-            'brand' => ['name' => $tenant?->name, 'logo_letter' => $tenant?->branding['logo_letter'] ?? 'L'],
+            'brand' => ['name' => $tenant?->name, 'logo_letter' => $tenant?->branding['logo_letter'] ?? 'L', 'mark' => $tenant?->branding['mark'] ?? null],
             'redirect' => $request->get('redirect', 'admin/calendar'),
         ]);
     }

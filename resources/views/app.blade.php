@@ -8,6 +8,8 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @routes
 @vite('resources/js/app.js')
+@php($palette = \App\Support\BrandPalette::css(app(\App\Support\TenantContext::class)->get()?->branding['palette'] ?? null))
+@if($palette)<style>{!! $palette !!}</style>@endif
 @inertiaHead
 </head>
 <body class="@yield('bodyClass')">

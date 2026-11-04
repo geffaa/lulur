@@ -180,6 +180,7 @@ class BookingController extends Controller
             'name' => $tenant->name,
             'currency' => $tenant->currency,
             'logo_letter' => $branding['logo_letter'] ?? mb_substr($tenant->name, 0, 1),
+            'mark' => $branding['mark'] ?? null,
             'hero' => $branding['hero'] ?? null,
             'tagline' => $branding['tagline'] ?? null,
             'rating' => $branding['rating'] ?? null,

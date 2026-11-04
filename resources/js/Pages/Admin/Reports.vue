@@ -17,7 +17,7 @@ function apply() { router.get(route('admin.reports'), { from: from.value, to: to
 
 const fmt = (m) => (props.currency === 'IDR' ? 'Rp ' + m.toLocaleString('id-ID') : '$' + (m / 100).toFixed(2))
 const hours = (min) => `${Math.floor(min / 60)} h ${String(min % 60).padStart(2, '0')}`
-const heatColor = (n) => ['', 'var(--brand-tint)', 'var(--brand-soft)', '#F0CFD6', 'var(--brand-light)', 'var(--brand-mid)'][Math.min(n, 5)]
+const heatColor = (n) => ['', 'var(--brand-tint)', 'var(--brand-soft)', 'color-mix(in srgb, var(--brand-soft) 55%, var(--brand-light))', 'var(--brand-light)', 'var(--brand-mid)'][Math.min(n, 5)]
 const hoursRange = Array.from({ length: 12 }, (_, i) => 9 + i)
 const maxRevenue = Math.max(1, ...props.revenue_by_service.map((r) => r.revenue))
 </script>

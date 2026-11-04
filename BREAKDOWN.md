@@ -16,7 +16,7 @@ Laravel + PostgreSQL + Inertia/Vue (PostgreSQL was chosen for its exclusion cons
 | M5 front desk and clients | Done (calendar, checkout + tip, no-show fee, packages, gift cards, therapist Today) |
 | M6 reports, README, case study | Done; demo video recorded, no hosted demo |
 
-39 Pest tests (121 assertions) and 14 Playwright browser tests (`npm run e2e`), all passing. UI checked in a browser at 1440 and 390 px (zero native form controls, zero horizontal scroll).
+39 Pest tests (121 assertions) and 17 Playwright browser tests (`npm run e2e`), all passing. UI checked in a browser at 1440 and 390 px (zero native form controls, zero horizontal scroll).
 
 ## Hand-off notes
 - **Payments:** Midtrans Snap (sandbox) is implemented for IDR: transaction creation, webhook signature check + amount check, status reconciliation on return; webhook routes no longer go through tenant resolution. Verified live with a real sandbox payment; a real webhook delivery is untested (needs a public URL). **Not real yet:** Stripe, production Midtrans activation, WhatsApp Cloud API, an email provider.

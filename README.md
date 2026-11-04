@@ -12,9 +12,11 @@ Lulur is a booking platform for wellness businesses (day spas, massage studios, 
 |---|---|---|
 | ![](docs/img/01-cover.png) | ![](docs/img/02-couples-time.png) | ![](docs/img/03-consent-deposit.png) |
 
-| Front-desk calendar | Reports | Booked on a phone |
+| Front-desk calendar | One platform, three brands | Booked on a phone |
 |---|---|---|
-| ![](docs/img/04-calendar.png) | ![](docs/img/05-reports.png) | ![](docs/img/06-mobile-confirmed.png) |
+| ![](docs/img/04-calendar.png) | ![](docs/img/05-three-tenants.png) | ![](docs/img/06-mobile-confirmed.png) |
+
+Reports: [docs/img/07-reports.png](docs/img/07-reports.png).
 
 ## What it does
 
@@ -24,7 +26,7 @@ Lulur is a booking platform for wellness businesses (day spas, massage studios, 
 - **Deposits and policies** — per-tenant (and per-service) deposit %, saved-card mode, cancellation window and no-show fee; the policy is snapshotted onto the booking so later changes are not retroactive.
 - **Payments** behind a `PaymentGateway` interface; webhook handling is idempotent by `idempotency_key` (a replay changes nothing).
 - **Forms** — intake/consent forms are versioned (`forms` → `form_versions` → `form_submissions`), signed on the phone, expire after 12 months, and the calendar flags "Form missing".
-- **Multi-tenant** — subdomain resolution, a global `tenant_id` scope on every tenant model, plus PostgreSQL row-level security as a second layer.
+- **Multi-tenant** — each tenant has its own mark, accent palette, currency and timezone; subdomain resolution, a global `tenant_id` scope on every tenant model, plus PostgreSQL row-level security as a second layer.
 - **Front desk** — calendar by therapist or by room, drag-to-move with conflict validation, walk-ins, check-in, checkout with tip split, no-show fee (managers only, audited), client profiles, packages and gift cards, utilisation / revenue / no-show / tip reports.
 - **Roles** — owner, manager, front desk, therapist (mobile "Today" view), platform admin; TOTP 2FA; activity log.
 - **Reminders** — confirmation, 1 day and 2 hours before, with quiet hours; a client replying `STOP` stops WhatsApp reminders (email is unaffected).
@@ -69,7 +71,7 @@ Password for all seeded users: `password`. Clients book without an account.
 php artisan test
 ```
 
-39 Pest tests (121 assertions) against a real PostgreSQL database, plus 14 Playwright browser tests (7 flows × desktop and phone viewports):
+39 Pest tests (121 assertions) against a real PostgreSQL database, plus 17 Playwright browser tests (9 flows at desktop and phone size, one phone-only):
 
 - availability engine (table cases): couples needs suite + two therapists, buffers, gender preference, auto-assignment
 - constraints: overlapping room inserts are rejected without the engine; **10 OS processes race for one slot and exactly one booking is created**

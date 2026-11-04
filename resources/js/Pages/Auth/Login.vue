@@ -1,4 +1,5 @@
 <script setup>
+import TenantMark from '@/Components/TenantMark.vue'
 import { ref } from 'vue'
 import { router } from '@inertiajs/vue3'
 import IconSprite from '@/Components/IconSprite.vue'
@@ -22,7 +23,7 @@ function submit() {
         <div style="min-height:100vh;display:grid;place-items:center;padding:24px">
             <div class="card" style="width:min(400px,100%);padding:28px;display:grid;gap:14px">
                 <div class="blogo" style="display:flex;align-items:center;gap:10px;font:600 20px var(--serif)">
-                    <i style="width:34px;height:34px;border-radius:10px;background:var(--brand);color:#fff;display:grid;place-items:center;font-style:normal;font-size:16px">{{ brand?.logo_letter ?? 'L' }}</i>
+                    <TenantMark :mark="brand?.mark" :letter="brand?.logo_letter ?? 'L'" style="width:34px;height:34px;border-radius:10px;background:var(--brand);color:#fff;font-size:16px" />
                     {{ brand?.name ?? 'Lulur' }}
                 </div>
                 <h1 style="font-size:22px">Staff sign-in</h1>

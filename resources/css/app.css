@@ -578,3 +578,8 @@ table.heat td:first-child{background:none;text-align:left;padding-right:8px;whit
 .toast.ok .icon:first-child{color:#7ee2ab}.toast.bad .icon:first-child{color:#ffb4ab}
 .toast .x{margin-left:6px;border:0;background:none;color:#fff;opacity:.7;display:grid;place-items:center}
 @media (max-width:900px){.toastw{bottom:96px}}
+
+/* narrow header: keep the tenant name on one line */
+.blogo{white-space:nowrap;min-width:0}
+.blogo i{flex:none}
+@media (max-width:440px){.blogo{font-size:17px;gap:8px}.bhdr .w{gap:10px}.steps{gap:5px}.steps .sepl{width:10px;flex:none}}
